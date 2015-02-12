@@ -9,21 +9,21 @@ def main():
 
     parser.add_argument("filename", help="The name of the file in which the shellcode resides, without the .asm extension.", type=str)
 
-    parser.add_argument("--no-clean", help="Keeps the compiled files from the shellcode generation process. Useful for debugging.", action="store_true")
+    parser.add_argument("-n", "--no-clean", help="Keeps the compiled files from the shellcode generation process. Useful for debugging.", action="store_true")
 
-    parser.add_argument("--test", help="Tests the shellcode in a barebones C program", action="store_true")
+    parser.add_argument("-t", "--test", help="Tests the shellcode in a barebones C program", action="store_true")
 
-    parser.add_argument("--strace-test", help="Tests the shellcode in a barebones C program, using strace to monitor system calls.", action="store_true")
+    parser.add_argument("-s", "--strace-test", help="Tests the shellcode in a barebones C program, using strace to monitor system calls.", action="store_true")
 
-    parser.add_argument("--disassemble", help="Shows the output of objdump -d on the generated shellcode.", action="store_true")
+    parser.add_argument("-d", "--disassemble", help="Shows the output of objdump -d on the generated shellcode.", action="store_true")
 
-    parser.add_argument("--buffer-size", help="The length of the buffer in bytes. The distance between the start of the buffer and the start of the stored instruction pointer", type=int, default=0)
+    parser.add_argument("-b", "--buffer-size", help="The length of the buffer in bytes. The distance between the start of the buffer and the start of the stored instruction pointer", type=int, default=0)
 
-    parser.add_argument("--shellcode-array", help="Displays the shellcode as an array of integers, can be easily assigned to a character array (in gdb, for example).", action="store_true")
+    parser.add_argument("-a", "--shellcode-array", help="Displays the shellcode as an array of integers, can be easily assigned to a character array (in gdb, for example).", action="store_true")
 
-    parser.add_argument("--show-python", help="Forms a python command that generates the shellcode, can be copied and used as a command line argument to a program", action="store_true")
+    parser.add_argument("-p", "--show-python", help="Forms a python command that generates the shellcode, can be copied and used as a command line argument to a program", action="store_true")
 
-    parser.add_argument("--return-address", help="The new return address with which to overwrite the stored instruction pointer. Enter the address in hex as it is, but do not include the prefix 0x and do not convert to little endian form.", type=str, default="")
+    parser.add_argument("-a", "--return-address", help="The new return address with which to overwrite the stored instruction pointer. Enter the address in hex as it is, but do not include the prefix 0x and do not convert to little endian form.", type=str, default="")
 
     args = parser.parse_args()
 
